@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faketwitter</title>
+</head>
+<body>
+    <div id="container">
+        <textarea id="input"></textarea>
+        <p>remaing character: <span id="countdown">0/180</span></p>
+        <p>pressed key: <span id="pressedKey"></span></p>
+        <button id="sendButton">send</button>
+    </div>
+    <div id="pubblico">
+        qui verrà pubblicato il tuo tweet
+    </div>
+
+    <script>
+        var el = document.getElementById("input");
+        function countdown() {
+            var counter = document.getElementById("countdown");
+            if(el.value.lenght <= maxlength){
+            counter.innerHTML = "ciaio";
+            } else{
+                el.disabed = true; 
+            }
+        }
+
+        el.addEventListener("input", countdown)
+    </script>
+</body>
+</html>

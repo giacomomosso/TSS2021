@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scriptfilm.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Film in aula</h1>
+    <div class="container">
+        <h1 id="titolo"></h1>
+        <figure>
+            <img id="locandina" src="">
+        </figure>
+        <ul id="attori">
+
+        </ul>
+        <p id="durata"></p>
+        <p id="anno"></p>
+        <p id="genere"></p>
+        <button onclick="index++;setup(index)">avanti</button>
+        <button onclick="index--;setup(index)">indietro</button>
+    </div>
+    <script>
+        var index = 0;
+        function setup(index){
+            index < 0 ? index = 0 : null
+            index > (film.length-1) ? index = (film.length-1) : null
+            console.log(index);
+            var elements ="";
+            document.getElementById("titolo").innerText = film[index].titolo;
+            document.getElementById("locandina").src = film[index].locandina;
+            film[index].attori.forEach( element => {
+                elements += '<li>'+element+'</li>';
+            });
+            document.getElementById("attori").innerHTML = elements
+            document.getElementById("durata").innerText = "durata: "+film[index].durata;
+            document.getElementById("anno").innerText = "anno: "+film[index].anno;
+            document.getElementById("genere").innerText = "genere: "+film[index].genere;
+        }
+        setup(index);
+    </script>
+</body>
+</html>

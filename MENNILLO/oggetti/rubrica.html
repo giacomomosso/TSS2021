@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="name" type="text" placeholder="name">
+        <input id="number" type="tel" maxlength="10" placeholder="telephone number">
+        <button onclick="addContatto()">aggiungi</button> 
+    </form>
+    <div id="rubrica"></div>
+    <script>
+
+        var elenco = [];
+
+        function Contatto(name,number){
+            this.name = name;
+            this.number = number;
+            this.getName = function(){
+                return this.name;
+            }
+            this.getNumber = function() {
+                return this.number;
+            }
+        }
+
+        function alphabeticalSort(){
+            elenco.sort(function (a, b) {
+                if (a.getName > b.getName) {
+                    return -1;
+                }
+                if (b.getName > a.getName) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            document.getElementById("rubrica").innerHTML = "elenco";
+        }
+
+        function addContatto(){
+            var name = document.getElementById("name").value;
+            var number = document.getElementById("number").value;
+            elenco.push(new Contatto(name,number));
+            alphabeticalSort();
+            
+        }
+    </script>
+</body>
+</html>

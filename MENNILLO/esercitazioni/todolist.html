@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>   
+  </head>
+  <body>
+    <div>
+      <p>
+        <input id="input" type="text"><button onclick="addElementToList()">Aggiungi task</button>
+      </p>
+      
+      <h3>Cose Da Fare</h3>
+      <ul id="task-list"></ul>
+    </div>
+
+    <script type="text/javascript">
+
+        var tasks = [];
+
+        function task(name) {
+            this.task = name;
+        }
+
+        function check(input){
+          var result = false;
+          for (x in tasks){
+                if(tasks[x].task == input){
+                  result = true;
+                }
+            }
+          return result
+        }
+
+        function addElementToList() {
+            document.getElementById("task-list").innerHTML = "";
+            var input = document.getElementById("input").value;
+            check(input) ? alert("hai già una task chiamata "+input) : tasks.push(new task(input));
+            tasks.sort((a, b) => a.task.localeCompare(b.task))
+            console.log(tasks);
+            for (x in tasks){
+                document.getElementById("task-list").innerHTML += "<li>"+tasks[x].task+"</li>";
+            }
+        }
+
+    </script>
+
+  </body>
+</html>
